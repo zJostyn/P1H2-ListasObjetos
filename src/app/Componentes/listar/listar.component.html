@@ -40,7 +40,7 @@
                 <br>
                 <button (click)="deleteEstudiante(i)">Eliminar</button>
                 <br>
-                <button *ngIf="Estudiante.calificacionfinal && Estudiante.calificacionfinal < 7 && Estudiante.notadefinitiva && Estudiante.notadefinitiva < 7" (click)="submitNotaRecuperacion(Estudiante)">Nota Recuperación</button>
+                <button *ngIf="Estudiante.calificacionfinal && Estudiante.calificacionfinal < 7 && Estudiante.notadefinitiva && Estudiante.notadefinitiva < 7 && Estudiante.examenrecuperacion == undefined " (click)="submitNotaRecuperacion(Estudiante)">Nota Recuperación</button>
               </td>
             </tr>
            </tbody>
