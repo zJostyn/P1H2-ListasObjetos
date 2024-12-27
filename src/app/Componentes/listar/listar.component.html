@@ -1,0 +1,54 @@
+<section>
+    <div class="container">
+        <h1>Gestion de Estudiantes</h1>
+        <button (click)="isOpen = true ; selectedEstudiante=null">Agregar Estudiante</button>
+         <table>
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Cedula</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Sexo</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Parcial 1</th>
+                    <th>Parcial 2</th>
+                    <th>Calificacion Final</th>
+                    <th>Examen Recuperación</th>
+                    <th>Nota Definitiva</th>
+                    <th>Estado Aprobatorio</th>
+                    <th>Acciones</th>
+                </tr>
+           </thead>
+           <tbody>
+            <tr *ngFor = "let Estudiante of Estudiantes; let i=index"  >
+              <td>{{Estudiante.codigo}}</td>
+              <td>{{Estudiante.cedula}}</td>
+              <td>{{Estudiante.nombres}}</td>
+              <td>{{Estudiante.apellidos}}</td>
+              <td>{{Estudiante.sexo}}</td>
+              <td>{{Estudiante.fechanacimiento}}</td>
+              <td>{{Estudiante.parcial1}}</td>
+              <td>{{Estudiante.parcial2}}</td>
+              <td>{{Estudiante.calificacionfinal}}</td>
+              <td>{{Estudiante.examenrecuperacion}}</td>
+              <td>{{Estudiante.notadefinitiva}}</td>
+              <td *ngIf="Estudiante.notadefinitiva && Estudiante.notadefinitiva < 7" style="color: red">Reprobado</td>
+              <td *ngIf="Estudiante.notadefinitiva && Estudiante.notadefinitiva >= 7"  style="color: green">Aprobado</td>
+              <td>
+                <button (click)="editEstudiante(Estudiante)">Editar</button>
+                <br>
+                <button (click)="deleteEstudiante(i)">Eliminar</button>
+                <br>
+                <button *ngIf="Estudiante.calificacionfinal && Estudiante.calificacionfinal < 7 && Estudiante.notadefinitiva && Estudiante.notadefinitiva < 7" (click)="submitNotaRecuperacion(Estudiante)">Nota Recuperación</button>
+              </td>
+            </tr>
+           </tbody>
+
+         </table>
+
+    </div>
+    <app-agregar [isOpen]="isOpen"  [selectedEstudiante]="selectedEstudiante"  (close)="onCloseModal()"></app-agregar>
+    <app-agregar [isOpen2]="isOpen2"  [selectedEstudiante]="selectedEstudiante"  (close)="onCloseModal2()"></app-agregar>
+
+</section>
